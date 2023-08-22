@@ -8,6 +8,7 @@ import Home from "./Home";
 import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 
 function App() {
+  const [mode, setMode] = useState("light");
   const toggleMode = () => {
     if (mode === "light") {
       setMode("black");
@@ -18,7 +19,6 @@ function App() {
     }
   };
 
-  const [mode, setMode] = useState("light");
   return (
     <>
       <BrowserRouter>

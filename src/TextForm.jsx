@@ -53,7 +53,8 @@ let newText = joinWord;
         {/* Ternary Operators  */}
       </div>
 
-      <div className="container my-3">
+      <div className="container my-3 ">
+
 
         <button className="btn btn-primary mx-2" onClick={handkeUpClick}>Convert to UpperCase</button>
 
