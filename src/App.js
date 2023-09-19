@@ -1,41 +1,50 @@
-import About from "./About";
-import { useState } from "react";
 import "./App.css";
-import Navbar from "./Navbar";
-import TextForm from "./TextForm";
-import Home from "./Home";
-
-import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import Navbar from "./Components/Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Components/Home";
+import { useState } from "react";
+import Alert from "./Components/Alert";
 
 function App() {
   const [mode, setMode] = useState("light");
+
+  const [alert, setAlert] = useState(null);
+
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type,
+    });
+
+    setTimeout(() => {
+      setAlert(null);
+    }, 5000);
+  };
+
   const toggleMode = () => {
     if (mode === "light") {
-      setMode("black");
-      document.body.style.backgroundColor = "#073880";
+      setMode("dark");
+      document.body.style.backgroundColor = "black";
+      showAlert("Dark mode has been enabled", "Successfully")
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
+      showAlert("Light mode has been enabled", "Successfully")
     }
   };
 
   return (
-    <>
+    <div className="App">
       <BrowserRouter>
-        <Navbar
-          title="TextUtils"
-          home="Home"
-          about="About"
-          mode={mode}
-          toggleMode={toggleMode}
-        />
+        <Navbar mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
         <Routes>
-          <Route path="/" element={<Home mode={mode}/>}></Route>
-          <Route path="/about" element={<About />}></Route>
-          
+          <Route path="/" element={<Home mode={mode} showAlert={showAlert}/>}></Route>
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

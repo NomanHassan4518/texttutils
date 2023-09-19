@@ -1,0 +1,32 @@
+.btn1 button:hover{
+  background-color: red;
+}
+
+.btn1{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
+@media screen and (max-width:767px) {
+  .textArea{
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:768px) and (max-width:1023px) {
+  .textArea{
+    width: 100%;
+  }
+
+  .btn1 button{
+    margin-top: 30px;
+  }
+}
+
+@media screen and (min-width:1024px)  {
+  .textArea{
+    width: 100%;
+  }
+}
